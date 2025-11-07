@@ -46,3 +46,11 @@ What should we do? At first time we should check every input section in web-app 
 </p>
 
 **Fist we check login page, I'll use ' or " to see has vulnerable box or not! I tested payloads on login page but happend nothing I went on second page,If you focuse on response, you'll got our request redirected to login.php.So we can understand all inpusts sanitization in this page and we have not error.**
+
+<hr>
+
+<p align="center">
+    <img src="../static/image/SQLi-img/HTB-33-518-CACCOUNT-TEST.png" alt="test SQLi">  
+</p>
+
+**When I testing vulnerable boxes in "Create Account" page I found this path ***'/api/checkUsername.php'*** first I tought it can be vulnerable but it was not, I keeped testing till found this ***invitation code*** box** 
