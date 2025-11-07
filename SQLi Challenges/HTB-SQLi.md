@@ -19,3 +19,15 @@ What should we do? At first time we should check every input section in web-app 
     <img src="../static/image/SQLi-img/HTB-33-518-CACCOUNT.png" >
     We have four input boxes and we will test our injections on them.
 </p>
+
+<hr>
+
+## Second Step
+- Prepare tools and payloads
+    - Run Burp
+    - Write usefull and different payloads for injection
+    ``` ' ,     " ,     \'' ,   \"" , 
+        ' OR 1=1 -- -  , ' OR '1'='1
+        " OR 1=1 -- -  , " OR "1"="1
+        ') OR 1=1 -- - , ') OR '1'='1
+        ") OR 1=1 -- - , ") OR "1"="1
