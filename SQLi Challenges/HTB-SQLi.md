@@ -38,6 +38,11 @@ What should we do? At first time we should check every input section in web-app 
 | `' "` | mixed quotes/edge-case (test escaping) |
 | `\' OR \'1\'=\'1` | escaped single-quotes (in forms that escape differently) |
 
+<hr>
 
 ### Get start to find vulnerable Page and input box
-
+<p align="center">
+    Fist we check login page, I'll use ' or " to see has vulnerable or not!
+    I tested payloads on login page but happend nothing I went on second page
+    <img src="../static/image/SQLi-img/HTB-33-518-LOGIN-test.png" alt="test SQLi">  
+</p>
