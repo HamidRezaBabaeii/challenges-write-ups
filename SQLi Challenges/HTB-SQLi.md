@@ -5,16 +5,17 @@ What should we do? At first time we should check every input section in web-app 
 ## First Step
 - Find pages and them input sections.
     - We have two page
-
         - ***Login page***
+        - ***Create Account***
+
 <p align="center">
     <img src="../static/image/SQLi-img/HTB-33-518-LOGIN.png" >
-    **We have two input boxes and we will test our injections on them.**
+    We have two input boxes and we will test our injections on them.
 </p>
 
+<hr>
 
-        - ***Create Account***
 <p align="center">
     <img src="../static/image/SQLi-img/HTB-33-518-CACCOUNT.png" >
-    **We have four input boxes and we will test our injections on them.**
+    We have four input boxes and we will test our injections on them.
 </p>
