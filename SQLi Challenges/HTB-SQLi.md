@@ -62,5 +62,9 @@ What should we do? At first time we should check every input section in web-app 
 **Atention to statuse code, we got 500 when write (') end of ***'invitation code'*** box input. After testing some payloads I found this payload that works *" ') OR 1=1 -- - "*. Because we don't have invite code we could not create account but with this payload, we were able to create.**
 
 <p align="center">
-    <img src="../static/image/SQLi-img/HTB-33-518-CACCOUNT-TEST2.png" alt="test SQLi">  
+    <img src="../static/image/SQLi-img/HTB-33-518-CACCOUNT-TEST3.png" alt="test SQLi">  
 </p>
+
+**I tested ***( ') ORDER BY 1 -- -)*** it was ok but when I checked 2, I got 500 status. This vulnerable box can't help us to find admin password, because there is no response and it works with headers. Now we could able to create our accont and I'll login with it.**
+
+<hr>
