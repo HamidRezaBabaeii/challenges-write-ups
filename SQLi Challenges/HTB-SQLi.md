@@ -4,4 +4,7 @@ What should we do? At first time we should check every input section in web-app 
 
 ## First Step
 - Find pages and them input sections.
+    - We have two page
+        - ***Login page***
+        - ***Create Account***
 
