@@ -9,5 +9,5 @@ What should we do? At first time we should check every input section in web-app 
         - ***Create Account***
 
 <p align="center">
-    <img src="\static\image\SQLi-img\HTB-33-518-LOGIN.png" >
+    <img src="../static/image/SQLi-img/HTB-33-518-LOGIN.png" >
 </p>
