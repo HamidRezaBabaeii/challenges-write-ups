@@ -35,5 +35,9 @@ What should we do? At first time we should check every input section in web-app 
 | `" OR 1=1 -- -` | Double-quote no-quotes variant |
 | `') OR '1'='1` | Close paren + string injection |
 | `") OR "1"="1` | Close paren double-quote |
-| `' - "` | mixed quotes/edge-case (test escaping) |
+| `' "` | mixed quotes/edge-case (test escaping) |
 | `\' OR \'1\'=\'1` | escaped single-quotes (in forms that escape differently) |
+
+
+### Get start to find vulnerable Page and input box
+
