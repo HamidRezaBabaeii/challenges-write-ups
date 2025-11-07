@@ -42,7 +42,9 @@ What should we do? At first time we should check every input section in web-app 
 
 ### Get start to find vulnerable Page and input box
 <p align="center">
-    Fist we check login page, I'll use ' or " to see has vulnerable or not!
-    I tested payloads on login page but happend nothing I went on second page
+    Fist we check login page, I'll use ' or " to see has vulnerable box or not!
+    I tested payloads on login page but happend nothing I went on second page,
+    If you focuse on response, you'll got our request redirected to login.php.
+    So we can understand all inpusts sanitization in this page and we have not error.
     <img src="../static/image/SQLi-img/HTB-33-518-LOGIN-test.png" alt="test SQLi">  
 </p>
