@@ -2,10 +2,14 @@
 
 ## Summary
 
--Requirements
-    -Programming Language: PHP
-    -Skill: Source Code Auditing
-    -SQLi: UNION technique in string values 
+-  **Requirements:**
+    - **Programming Language: PHP**
+
+    - **Skill: Source Code Auditing**
+
+    - **SQLi: UNION technique in string values**
+
   
--Objective
-    -Your goal is to extract the flag from the database by exploiting a SQL injection vulnerability
+- **Objective**
+
+    - **Your goal is to extract the flag from the database by exploiting a SQL injection vulnerability**
