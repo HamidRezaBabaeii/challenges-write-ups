@@ -1,15 +1,12 @@
 # SQLi Level 1 (String UNION)- Voorivex Academy
 
--Requirements:
-    - **Programming Language: PHP**
-    - **Skill: Source Code Auditing**
-    - **SQLi: UNION technique in string values**
-
-    
-
--Objective
-    -**Your goal is to extract the flag from the database by exploiting a SQL injection vulnerability**
-
-
+-**Requirements:**
+     **Programming Language: PHP**
+     **Skill: Source Code Auditing**
+     **SQLi: UNION technique in string values**
+    <hr>
+**Objective**
+    **Your goal is to extract the flag from the database by exploiting a SQL injection vulnerability**
+    <hr>
 
 
