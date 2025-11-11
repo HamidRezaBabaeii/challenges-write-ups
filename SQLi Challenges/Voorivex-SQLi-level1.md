@@ -13,3 +13,7 @@
 - **Objective**
 
     - **Your goal is to extract the flag from the database by exploiting a SQL injection vulnerability**
+
+**<p> As mentioned, we're looking for vulnerable queries in the web app — let's get started! :)</p>**
+
+<hr>
