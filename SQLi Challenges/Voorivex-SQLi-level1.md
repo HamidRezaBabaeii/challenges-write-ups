@@ -59,7 +59,6 @@ To identify how many columns the backend query uses, I tested
 
 The query breaks at `ORDER BY 11`, so the table contains **10 columns**.
 
-<img src="../static/image/SQLi-img/voorivex-academy-sqli1-4.png" alt="Numbers payload">
 
 <hr>
 
@@ -75,6 +74,8 @@ First, with strings:
 Then with integers:
 
 **`?id=1'+UNION+SELECT+1,2,3,4,5,6,7,8,9,10+--+-`**
+
+<img src="../static/image/SQLi-img/voorivex-academy-sqli1-4.png" alt="Numbers payload">
 
 The numeric payload didn't work properly because the page only displays
 the **first row** of the SQL result.\
