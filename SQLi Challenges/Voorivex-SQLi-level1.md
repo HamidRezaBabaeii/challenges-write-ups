@@ -53,6 +53,10 @@
 <p style="color:red;">There is difference between these two payload, What can be it? So if our columns type will be string, we should use "string" to find visiable columns else use numbers.</p>
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-4.png" alt="Numbers payload">
-<img src="../static/image/SQLi-img/voorivex-academy-sqli1-5.png" alt="Strings payload">
+
+**Question: ***Why does not it work?*** At first may be you think if I used string payload it does work! but no, when our columns are string, they can cast int to string and show them, we have other point that were not attention to it. This site is not dynamic and just show first result of sql query, to solve this we should use below payload**
+
+**Payload : ***`URL: XYZ.online/post.php?id=1'+AND+1=2+UNION+SELECT+1+2+3+4+5+6+7+8+9+10+--+-`*****
 
 <hr>
+
