@@ -52,4 +52,5 @@
 
 <p style="color:red;">There is difference between these two payload, What can be it? So if our columns type will be string, we should use "string" to find visiable columns else use numbers.</p>
 
-  
+  <img src="../static/image/SQLi-img/voorivex-academy-sqli1-4.png" alt="Numbers payload">
+  <img src="../static/image/SQLi-img/voorivex-academy-sqli1-5.png" alt="Strings payload">
