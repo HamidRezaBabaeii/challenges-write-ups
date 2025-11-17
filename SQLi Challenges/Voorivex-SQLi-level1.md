@@ -50,6 +50,6 @@
     - `URL: XYZ.online/post.php?id=1'+UNION+SELECT+1+2+3+4+5+6+7+8+9+10+--+-`
 
 
-<p style:"color=red;">There is difference between these two payload, What can be it? So if our columns type will be string, we should use "string" to find visiable columns else use numbers.</p>
+<p style="color=red;">There is difference between these two payload, What can be it? So if our columns type will be string, we should use "string" to find visiable columns else use numbers.</p>
 
   
